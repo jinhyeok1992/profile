@@ -47,7 +47,7 @@ const mockTasks: Task[] = [
       '프로시저 수정'
     ],
     assignee: '김진혁',
-    priority: 'High',
+    priority: 'Low',
     progress: 100,
   },
   {
@@ -60,7 +60,7 @@ const mockTasks: Task[] = [
       'JavaScript와 PostgreSQL을 이용한 웹페이지 제작'
     ],
     assignee: '김진혁',
-    priority: 'Medium',
+    priority: 'Low',
     progress: 100,
   },
   {
@@ -77,7 +77,7 @@ const mockTasks: Task[] = [
       '이벤트 랜덤 쿠폰 서비스와 포인트 적립 API 개발'
     ],
     assignee: '김진혁',
-    priority: 'High',
+    priority: 'Medium',
     progress: 100,
   },
   {
@@ -125,7 +125,7 @@ const mockTasks: Task[] = [
       '통계 쿼리와 연동으로 실시간 업데이트 현황 구축'
     ],
     assignee: '김진혁',
-    priority: 'High',
+    priority: 'Medium',
     progress: 100,
   },
   {
@@ -142,7 +142,7 @@ const mockTasks: Task[] = [
       '티켓 발권 서비스 외부연동 API 개발'
     ],
     assignee: '김진혁',
-    priority: 'High',
+    priority: 'Medium',
     progress: 100,
   },
   {
