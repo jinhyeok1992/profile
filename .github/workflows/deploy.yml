@@ -1,0 +1,27 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main   # main 브랜치에 푸시될 때 실행
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy to Vercel
+        run: |
+          npm install -g vercel
+          vercel --token=$VERCEL_TOKEN --org $VERCEL_ORG_ID --project $VERCEL_PROJECT_ID --prod --yes
