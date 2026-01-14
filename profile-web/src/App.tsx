@@ -37,7 +37,7 @@ const mockTasks: Task[] = [
   {
     id: '11',
     title: '품질보증 시스템(QIS) 구축',
-    category: '한화시스템',
+    category: '한화솔루션',
     duration: '2020.07 ~ 2020.10',
     description: '방산 공장에서 생산된 물품 발주/검사/평가 프로세스를 관리하는 웹서비스를 제작했습니다.',
     subtasks: [
