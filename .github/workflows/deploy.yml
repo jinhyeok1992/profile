@@ -1,6 +1,5 @@
 name: Deploy to Vercel
 
-
 on:
   push:
     branches: [ "main" ]
@@ -13,23 +12,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '22'
-
-      #- name: Install dependencies
-      #  run: npm install # 원래라면 vercel에서 자동 빌드 되어야하나 무료버전이라 GitHub Actions에서 빌드하는것으로 대체
-
-      - name: Deploy to Vercel
-        env: 
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }} 
-        run: |
-          npm install -g vercel
-          vercel deploy \
-            --token=$VERCEL_TOKEN \
-            --prod \
-            --yes
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build project
+        run: npm run build
+        
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+        
+      - name: Pull Vercel project settings
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --token=$VERCEL_TOKEN --yes --environment=production
+        
+      - name: Deploy to Vercel (Production)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --token=$VERCEL_TOKEN --prod
