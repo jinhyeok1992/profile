@@ -16,7 +16,7 @@ export interface Task {
 
 const mockTasks: Task[] = [
   {
-    id: '12',
+    id: '1',
     title: '보험사 VOC 운영개발',
     category: '흥국화재',
     duration: '2018.10 ~ 2020.07',
@@ -35,7 +35,7 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '11',
+    id: '2',
     title: '품질보증 시스템(QIS) 구축',
     category: '한화솔루션',
     duration: '2020.07 ~ 2020.10',
@@ -51,7 +51,7 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '10',
+    id: '3',
     title: '금융 빅데이터 플랫폼 구축',
     category: 'BC카드',
     duration: '2020.11 ~ 2020.12',
@@ -64,7 +64,7 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '9',
+    id: '4',
     title: '뷰티포인트 멤버십앱 운영개발',
     category: '아모레퍼시픽',
     duration: '2021.01 ~ 2021.04',
@@ -81,7 +81,7 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '8',
+    id: '5',
     title: '공용서비스 컨테이너 전환',
     category: 'KTDS',
     duration: '2021.05 ~ 2021.12',
@@ -98,9 +98,9 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '7',
+    id: '6',
     title: '보험사 콜센터 운영개발',
-    category: 'AXA다이렉트',
+    category: 'AXA 다이렉트',
     duration: '2022.01 ~ 2022.06',
     description: '채널계 콜센터 운영 개발을 담당했습니다.',
     subtasks: [
@@ -115,7 +115,7 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '6',
+    id: '7',
     title: '통합품질 감시 시스템(TQMS) 개발',
     category: 'SK on',
     duration: '2022.06 ~ 2022.12',
@@ -129,7 +129,7 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '5',
+    id: '8',
     title: '시설관리공단 홈페이지 고도화',
     category: '원주시 시설관리공단',
     duration: '2023.01 ~ 2023.04',
@@ -146,7 +146,7 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '4',
+    id: '9',
     title: '매장 예약관리 시스템',
     category: '주식회사 피터',
     duration: '2023.05 ~ 2023.09',
@@ -163,7 +163,7 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '3',
+    id: '10',
     title: '클라우드 전환 프로젝트',
     category: '우리은행, 대구은행',
     duration: '2023.10 ~ 2024.03',
@@ -179,7 +179,7 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '2',
+    id: '11',
     title: '클라우드 AP전환 프로젝트',
     category: '한국 콘텐츠진흥원',
     duration: '2024.04 ~ 2024.06',
@@ -195,10 +195,10 @@ const mockTasks: Task[] = [
     progress: 100,
   },
   {
-    id: '1',
+    id: '12',
     title: '디지털 클러스터링 프로젝트',
     category: '아워홈',
-    duration: '2024.10 ~ 현재',
+    duration: '2024.10 ~ 2025.12',
     description: 'QSIS(Quality Safety Integral System) 프로젝트 안정화 및 연계된 신규 프로젝트 작업을 진행 중입니다.',
     subtasks: [
       'QMS, SOFT, 품질 클레임 등 통합 관리 시스템 개발',
