@@ -57,9 +57,6 @@ export function TechStackModal({ isOpen, onClose, techStacks }: TechStackModalPr
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/10 group-hover:to-pink-500/10 transition-all duration-300" />
                   <div className="relative p-4 flex flex-col items-center justify-center gap-2">
-                    <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                      <Code2 className="w-5 h-5 text-purple-300" />
-                    </div>
                     <span className="text-white/80 text-center">{tech}</span>
                   </div>
                 </div>

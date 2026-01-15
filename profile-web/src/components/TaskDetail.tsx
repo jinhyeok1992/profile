@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Task } from '../App';
-import { Clock, User, AlertCircle, CheckCircle2, X } from 'lucide-react';
+import { Clock, User, AlertCircle, CheckCircle2, X, Code2 } from 'lucide-react';
 
 interface TaskDetailProps {
   task: Task | undefined;
