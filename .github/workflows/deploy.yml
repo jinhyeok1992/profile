@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: Production - jinhyeok  # 원하는 이름으로 명시
-   
+      url: https://jinhyeok-ruming.vercel.app  # Production URL은 고정
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
