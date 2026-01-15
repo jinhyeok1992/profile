@@ -21,9 +21,11 @@ jobs:
           node-version: '22'
           
       - name: Install dependencies
+        working-directory: ./profile-web
         run: npm install
-        
+  
       - name: Build project
+        working-directory: ./profile-web
         run: npm run build
         
       - name: Install Vercel CLI
