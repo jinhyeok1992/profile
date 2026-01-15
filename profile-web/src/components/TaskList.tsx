@@ -19,7 +19,7 @@ export function TaskList({ tasks, selectedTaskId, onTaskSelect }: TaskListProps)
       {/* Task List */}
       <div className="flex-1 overflow-y-auto px-3 md:px-4 py-3 md:py-4">
         <div className="space-y-2">
-          {tasks.map((task) => {
+          {tasks.sort((a, b) => a.id.localeCompare(b.id)).map((task) => {
             const isSelected = selectedTaskId === task.id;
             
             return (
