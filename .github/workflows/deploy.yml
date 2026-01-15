@@ -11,7 +11,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: 
-      name: Production  # 원하는 이름으로 명시
+      name: Production - jinhyeok  # 원하는 이름으로 명시
    
     steps:
       - name: Checkout repository
