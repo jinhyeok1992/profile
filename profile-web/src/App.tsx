@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TaskList } from './components/TaskList';
 import { TaskDetail } from './components/TaskDetail';
+import { TechStackModal } from './components/TechStackModal';
 
 export interface Task {
   id: string;
