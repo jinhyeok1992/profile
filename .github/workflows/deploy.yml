@@ -10,8 +10,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: 
-      name: Production - jinhyeok  # 원하는 이름으로 명시
 
     steps:
       - name: Checkout repository
@@ -31,17 +29,7 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel
         
-      - name: Pull Vercel project settings
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: vercel pull --token=$VERCEL_TOKEN --yes --environment=production
-        
       - name: Deploy to Vercel (Production)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
-          vercel build --prod --token=$VERCEL_TOKEN
-          DEPLOY_URL=$(vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN)
-          echo "url=$DEPLOY_URL" >> $GITHUB_OUTPUT
-          echo "✅ Deployed to: $DEPLOY_URL"
+        run: vercel deploy --token=$VERCEL_TOKEN --prod --name=jinhyeok
