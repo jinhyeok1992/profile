@@ -35,8 +35,15 @@ import {
   SiSentry,
   SiDatadog,
   SiSlack,
+  SiVite,
+  SiGithub,
+  SiGitlab,
 } from 'react-icons/si';
 import { Code2, Database, TestTube, Eye } from 'lucide-react';
+
+// 기본 아이콘 및 색상
+const DEFAULT_ICON = Code2;
+const DEFAULT_COLOR = '#A78BFA';
 
 const techStackIcons: { [key: string]: { icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>; color: string } } = {
   'Notion': { icon: SiNotion, color: '#000000' },
@@ -80,6 +87,10 @@ const techStackIcons: { [key: string]: { icon: React.ComponentType<{ className?:
   'Datadog': { icon: SiDatadog, color: '#632CA6' },
   'CloudWatch': { icon: Eye, color: '#FF4F8B' },
   'Slack': { icon: SiSlack, color: '#4A154B' },
+  'Vite': { icon: SiVite, color: '#646CFF' },
+  'GitHub': { icon: SiGithub, color: '#181717' },
+  'GitLab': { icon: SiGitlab, color: '#FC6D26' },
+  'Nexacro': { icon: Code2, color: '#00B4D8' },
 };
 
 interface TechStackIconProps {
@@ -89,7 +100,7 @@ interface TechStackIconProps {
 
 export function TechStackIcon({ name, size = 'md' }: TechStackIconProps) {
   const tech = techStackIcons[name];
-  const Icon = tech?.icon || Code2;
+  const Icon = tech?.icon || DEFAULT_ICON;
   
   const sizeClasses = {
     sm: 'w-4 h-4',
@@ -100,11 +111,11 @@ export function TechStackIcon({ name, size = 'md' }: TechStackIconProps) {
   return (
     <Icon 
       className={sizeClasses[size]} 
-      style={{ color: tech?.color || '#A78BFA' }}
+      style={{ color: tech?.color || DEFAULT_COLOR }}
     />
   );
 }
 
 export function getTechStackColor(name: string): string {
-  return techStackIcons[name]?.color || '#A78BFA';
+  return techStackIcons[name]?.color || DEFAULT_COLOR;
 }
