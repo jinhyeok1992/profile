@@ -157,6 +157,24 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
             ))}
           </div>
         </div>
+
+        {/* Tech Stack */}
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-white/10">
+          <h3 className="text-white/90 mb-4 flex items-center gap-2">
+            <Code2 className="w-5 h-5" />
+            사용 기술 스택
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {task.techStack.map((tech, index) => (
+              <div
+                key={index}
+                className="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105"
+              >
+                <span className="text-white/80">{tech}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

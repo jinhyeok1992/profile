@@ -5,17 +5,27 @@ interface TaskListProps {
   tasks: Task[];
   selectedTaskId: string | null;
   onTaskSelect: (taskId: string) => void;
+  onOpenTechStack: () => void;
 }
 
-export function TaskList({ tasks, selectedTaskId, onTaskSelect }: TaskListProps) {
+export function TaskList({ tasks, selectedTaskId, onTaskSelect, onOpenTechStack }: TaskListProps) {
   return (
     <div className="h-full flex flex-col bg-black/20 backdrop-blur-sm">
       {/* Header */}
-      <div className="p-4 md:p-6 border-b border-white/10">
-        <h2 className="text-white/90 mb-2">프로젝트 업무</h2>
-        <p className="text-white/50">총 {tasks.length}개 업무</p>
+      <div className="p-4 md:p-6 border-b border-white/10 flex items-start justify-between">
+        <div>
+          <h2 className="text-white/90 mb-2">프로젝트 업무</h2>
+          <p className="text-white/50">총 {tasks.length}개 업무</p>
+        </div>
+        <button
+          onClick={onOpenTechStack}
+          className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/30 hover:border-purple-400/50 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+          title="전체 기술 스택 보기"
+        >
+          <Code2 className="w-5 h-5 md:w-6 md:h-6 text-purple-300 group-hover:text-purple-200 transition-colors" />
+        </button>
       </div>
-
+      
       {/* Task List */}
       <div className="flex-1 overflow-y-auto px-3 md:px-4 py-3 md:py-4">
         <div className="space-y-2">

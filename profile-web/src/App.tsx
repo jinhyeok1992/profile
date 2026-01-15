@@ -12,6 +12,7 @@ export interface Task {
   assignee: string;
   priority: 'High' | 'Medium' | 'Low';
   progress: number;
+  techStack: string[];
 }
 
 const mockTasks: Task[] = [
@@ -20,7 +21,7 @@ const mockTasks: Task[] = [
     title: '보험사 VOC 운영개발',
     category: '흥국화재',
     duration: '2018.10 ~ 2020.07',
-    description: '채널계 VOC 업무 SM을 담당하며 전자정부 프레임워크 기반의 고도화 프로젝트를 수행했습니다.',
+    description: '채널계 VOC 업무 SM을 담당하며 전자정부 프레임워크 기반의 고도화 프로젝트를 수행',
     subtasks: [
       '채널계 VOC 서비스 유지보수',
       'Java와 쉘스크립트, JP1를 이용한 배치 프로그램 개발',
@@ -33,42 +34,45 @@ const mockTasks: Task[] = [
     assignee: '김진혁',
     priority: 'High',
     progress: 100,
+    techStack: ['Java', 'Egov Framework', 'Oracle', 'BiMeta', 'JP1', 'Shell Script'],
   },
   {
     id: '2',
     title: '품질보증 시스템(QIS) 구축',
     category: '한화솔루션',
     duration: '2020.07 ~ 2020.10',
-    description: '방산 공장에서 생산된 물품 발주/검사/평가 프로세스를 관리하는 웹서비스를 제작했습니다.',
+    description: '방산 공장에서 생산된 물품 발주/검사/평가 프로세스를 관리하는 웹서비스를 제작',
     subtasks: [
       'JavaScript, Spring으로 관리자 페이지 개발',
       'OZ Viewer 연동',
       '메인 서버(MS-SQL)와 담당 서버(Oracle) 간의 데이터 연동 쿼리 개발',
-      '프로시저 수정'
+      '프로시저 개발'
     ],
     assignee: '김진혁',
     priority: 'Low',
     progress: 100,
+    techStack: ['Java', 'JavaScript', 'Spring Framework', 'OZ Viewer', 'MsSQL', 'Oracle'],
   },
   {
     id: '3',
     title: '금융 빅데이터 플랫폼 구축',
     category: 'BC카드',
     duration: '2020.11 ~ 2020.12',
-    description: '빅데이터 API를 구매/판매 할 수 있는 웹플랫폼을 고도화했습니다.',
+    description: '빅데이터 API를 구매/판매 할 수 있는 웹플랫폼을 고도화',
     subtasks: [
-      'JavaScript와 PostgreSQL을 이용한 웹페이지 제작'
+      'JavaScript와 PostgreSQL을 이용한 웹페이지 기능 및 api 연동'
     ],
     assignee: '김진혁',
     priority: 'Low',
     progress: 100,
+    techStack: ['JSP', 'Jquery', 'JavaScript', 'PostgreSQL'],
   },
   {
     id: '4',
     title: '뷰티포인트 멤버십앱 운영개발',
     category: '아모레퍼시픽',
     duration: '2021.01 ~ 2021.04',
-    description: '멤버십 관리 및 신규 이벤트를 개발했습니다.',
+    description: '멤버십 관리 및 신규 이벤트를 개발',
     subtasks: [
       'JavaScript를 이용한 웹뷰 페이지 개발',
       'Postman으로 모바일 개발자와 앱서비스 협업',
@@ -79,13 +83,14 @@ const mockTasks: Task[] = [
     assignee: '김진혁',
     priority: 'Medium',
     progress: 100,
+    techStack: ['JSP', 'JavaScript', 'Java', 'Oracle'],
   },
   {
     id: '5',
     title: '공용서비스 컨테이너 전환',
     category: 'KTDS',
     duration: '2021.05 ~ 2021.12',
-    description: 'KT 라이프플랜 플랫폼, 공정경쟁 플랫폼을 고도화했습니다.',
+    description: 'KT 라이프플랜 플랫폼, 공정경쟁 플랫폼을 고도화',
     subtasks: [
       'JavaScript, jQuery, FreeMarker, Bootstrap을 이용한 웹페이지 개발',
       'PostgreSQL을 이용한 피벗 공통 메뉴 개발',
@@ -96,13 +101,14 @@ const mockTasks: Task[] = [
     assignee: '김진혁',
     priority: 'High',
     progress: 100,
+    techStack: ['JSP', 'JavaScript', 'jQuery', 'FreeMarker', 'Bootstrap', 'PostgreSQL', 'Spring Framework'],
   },
   {
     id: '6',
     title: '보험사 콜센터 운영개발',
     category: 'AXA 다이렉트',
     duration: '2022.01 ~ 2022.06',
-    description: '채널계 콜센터 운영 개발을 담당했습니다.',
+    description: '채널계 콜센터 운영 개발을 담당',
     subtasks: [
       'ProFrame과 Java 기반 콜센터 QA, 상품권 서비스 유지보수',
       'ProFrame 배치를 이용한 콜센터 배치 개발 및 관리',
@@ -113,13 +119,14 @@ const mockTasks: Task[] = [
     assignee: '김진혁',
     priority: 'Medium',
     progress: 100,
+    techStack: ['ProFrame', 'Java', 'Secure CRT'],
   },
   {
     id: '7',
     title: '통합품질 감시 시스템(TQMS) 개발',
     category: 'SK on',
     duration: '2022.06 ~ 2022.12',
-    description: '사내 공장 실시간 모니터링 및 관리 서비스를 구축했습니다.',
+    description: '사내 공장 실시간 모니터링 및 관리 서비스를 구축',
     subtasks: [
       'jqGrid, JavaScript, jQuery, Spring으로 관리자 페이지 구축',
       '통계 쿼리와 연동으로 실시간 업데이트 현황 구축'
@@ -127,30 +134,32 @@ const mockTasks: Task[] = [
     assignee: '김진혁',
     priority: 'Medium',
     progress: 100,
+    techStack: ['JSP', 'JavaScript', 'jQuery', 'jqGrid', 'Spring Framework', 'Oracle'],
   },
   {
     id: '8',
     title: '시설관리공단 홈페이지 고도화',
     category: '원주시 시설관리공단',
     duration: '2023.01 ~ 2023.04',
-    description: '원주시 시설 수강 신청 및 관리 서비스를 고도화했습니다.',
+    description: '원주시 시설 수강 신청 및 관리 서비스를 고도화',
     subtasks: [
       'Thymeleaf, Spring Boot를 이용한 관리자 페이지 구축',
       'Nicepay 에이전트를 이용한 결제 로직 개발',
-      'SMS, 카카오톡 발송 API 개발',
+      '슈어엠 플랫폼으로 SMS, 카카오톡 발송 API 개발',
       '세션 스토리지를 이용한 로그인 사용자 세션 관리 API 개발',
       '티켓 발권 서비스 외부연동 API 개발'
     ],
     assignee: '김진혁',
     priority: 'Medium',
     progress: 100,
+    techStack: ['JSP', 'Thymeleaf', 'Java', 'Spring Boot', 'Egov Framework', 'Oracle'],
   },
   {
     id: '9',
     title: '매장 예약관리 시스템',
     category: '주식회사 피터',
     duration: '2023.05 ~ 2023.09',
-    description: '매장 및 회원 관리와 대회 관리 플랫폼을 구축했습니다.',
+    description: '매장 및 회원 관리와 대회 관리 플랫폼을 구축',
     subtasks: [
       'Vue와 Nuxt 기반의 사용자 및 관리자 페이지 프론트 서버 구성',
       'Store, Middleware, Plugins를 이용한 공통 모듈 개발',
@@ -161,13 +170,14 @@ const mockTasks: Task[] = [
     assignee: '김진혁',
     priority: 'Medium',
     progress: 100,
+    techStack: ['Vue', 'Nuxt.js', 'JavaScript'],
   },
   {
     id: '10',
     title: '클라우드 전환 프로젝트',
     category: '우리은행, 대구은행',
     duration: '2023.10 ~ 2024.03',
-    description: '우리은행, 대구은행 클라우드 전환사업 - CMP 솔루션을 커스터마이징했습니다.',
+    description: '우리은행, 대구은행 클라우드 전환사업 - CMP 솔루션을 커스터마이징',
     subtasks: [
       '스프링 배치를 이용한 인사정보 파일 머지 배치 기능 구현',
       'React와 TypeScript 기반의 CMP 솔루션 프론트엔드 수정 개발',
@@ -177,13 +187,14 @@ const mockTasks: Task[] = [
     assignee: '김진혁',
     priority: 'High',
     progress: 100,
+    techStack: ['React', 'TypeScript', 'Next.js', 'Spring Framework', 'Oracle', 'MySQL'],
   },
   {
     id: '11',
     title: '클라우드 AP전환 프로젝트',
     category: '한국 콘텐츠진흥원',
     duration: '2024.04 ~ 2024.06',
-    description: '퍼블릭 클라우드 환경에서 전자정부 프레임워크 기반의 AP전환 프로젝트를 수행했습니다.',
+    description: '퍼블릭 클라우드 환경에서 전자정부 프레임워크 기반의 AP전환 프로젝트를 수행',
     subtasks: [
       'Bastion Host를 사용한 퍼블릭 클라우드 서버 환경 작업',
       '전자정부 프레임워크 및 톰캣 WAS 환경 설치',
@@ -193,6 +204,7 @@ const mockTasks: Task[] = [
     assignee: '김진혁',
     priority: 'High',
     progress: 100,
+    techStack: ['Egov Framework', 'Java', 'Oracle', 'Linux'],
   },
   {
     id: '12',
@@ -212,15 +224,36 @@ const mockTasks: Task[] = [
     ],
     assignee: '김진혁',
     priority: 'High',
-    progress: 75,
+    progress: 100,
+    techStack: ['React', 'JavaScript', 'ApexCharts.js', 'Java', 'Spring Boot', 'Oracle', 'PostgreSQL', 'Linux', 'Selenium', 'JSoup', 'AWS S3', 'AWS OpenSearch', 'AWS QuickSight'],
+  },
+  {
+    id: '13',
+    title: '신규 프로젝트',
+    category: '회사명',
+    duration: '2026.01 ~ 진행중',
+    description: '프로젝트 설명을 입력하세요.',
+    subtasks: [
+      '업무 내용을 입력하세요.'
+    ],
+    assignee: '김진혁',
+    priority: 'Medium',
+    progress: 0,
+    techStack: [],
   },
 ];
 
 export default function App() {
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [isTechStackModalOpen, setIsTechStackModalOpen] = useState(false);
 
   const selectedTask = mockTasks.find(task => task.id === selectedTaskId);
+
+  // Get all unique tech stacks
+  const allTechStacks = Array.from(
+    new Set(mockTasks.flatMap(task => task.techStack))
+  ).sort();
 
   const handleTaskSelect = (taskId: string) => {
     setSelectedTaskId(taskId);
@@ -229,6 +262,14 @@ export default function App() {
 
   const handleCloseDetail = () => {
     setIsDetailOpen(false);
+  };
+
+  const handleOpenTechStackModal = () => {
+    setIsTechStackModalOpen(true);
+  };
+
+  const handleCloseTechStackModal = () => {
+    setIsTechStackModalOpen(false);
   };
 
   return (
@@ -260,8 +301,16 @@ export default function App() {
           tasks={mockTasks}
           selectedTaskId={selectedTaskId}
           onTaskSelect={handleTaskSelect}
+          onOpenTechStack={handleOpenTechStackModal}
         />
       </div>
+
+      {/* Tech Stack Modal */}
+      <TechStackModal
+        isOpen={isTechStackModalOpen}
+        onClose={handleCloseTechStackModal}
+        techStacks={allTechStacks}
+      />
     </div>
   );
 }
