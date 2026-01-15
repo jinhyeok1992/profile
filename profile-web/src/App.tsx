@@ -225,23 +225,12 @@ const mockTasks: Task[] = [
     assignee: '김진혁',
     priority: 'High',
     progress: 100,
-    techStack: ['React', 'JavaScript', 'ApexCharts.js', 'Java', 'Spring Boot', 'Oracle', 'PostgreSQL', 'Linux', 'Selenium', 'JSoup', 'AWS S3', 'AWS OpenSearch', 'AWS QuickSight'],
-  },
-  {
-    id: '13',
-    title: '신규 프로젝트',
-    category: '회사명',
-    duration: '2026.01 ~ 진행중',
-    description: '프로젝트 설명을 입력하세요.',
-    subtasks: [
-      '업무 내용을 입력하세요.'
-    ],
-    assignee: '김진혁',
-    priority: 'Medium',
-    progress: 0,
-    techStack: [],
+    techStack: ['React', 'JavaScript', 'Antd', 'ApexCharts.js', 'Java', 'Spring Boot', 'Oracle', 'PostgreSQL', 'Linux', 'Selenium', 'JSoup', 'AWS S3', 'AWS OpenSearch', 'AWS QuickSight', 'Swagger'],
   },
 ];
+
+//추가 기술 스택
+const additionalTechStacks = ['Nexacro', 'Vite', 'Vercel', 'GitHub', 'GitHub Actions', 'GitLab'];
 
 export default function App() {
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
@@ -252,7 +241,7 @@ export default function App() {
 
   // Get all unique tech stacks
   const allTechStacks = Array.from(
-    new Set(mockTasks.flatMap(task => task.techStack))
+    new Set([...mockTasks.flatMap(task => task.techStack), ...additionalTechStacks])
   ).sort();
 
   const handleTaskSelect = (taskId: string) => {
