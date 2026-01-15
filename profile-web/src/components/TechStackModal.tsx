@@ -1,4 +1,5 @@
 import { X, Code2 } from 'lucide-react';
+import { TechStackIcon } from './TechStackIcon';
 
 interface TechStackModalProps {
   isOpen: boolean;
@@ -20,14 +21,14 @@ export function TechStackModal({ isOpen, onClose, techStacks }: TechStackModalPr
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div 
-          className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-2xl border border-white/20 shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden"
+          className="bg-gradient-to-br from-cyan-900 via-sky-900 to-blue-900 rounded-2xl border border-white/20 shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
           <div className="p-6 border-b border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
-                <Code2 className="w-5 h-5 text-purple-400" />
+              <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                <Code2 className="w-5 h-5 text-cyan-400" />
               </div>
               <div>
                 <h2 className="text-white">사용 기술 스택</h2>
@@ -43,21 +44,18 @@ export function TechStackModal({ isOpen, onClose, techStacks }: TechStackModalPr
 
           {/* Content */}
           <div className="p-6 overflow-y-auto max-h-[calc(80vh-120px)]">
-            <div className="mb-4">
-              <span className="text-white/70">총 </span>
-              <span className="text-purple-400">{techStacks.length}</span>
-              <span className="text-white/70">개의 기술 스택</span>
-            </div>
-
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {techStacks.map((tech, index) => (
                 <div
                   key={index}
-                  className="group relative overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-purple-400/50 transition-all duration-300 hover:scale-105"
+                  className="group relative overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/10 group-hover:to-pink-500/10 transition-all duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 to-sky-500/0 group-hover:from-cyan-500/10 group-hover:to-sky-500/10 transition-all duration-300" />
                   <div className="relative p-4 flex flex-col items-center justify-center gap-2">
-                    <span className="text-white/80 text-center">{tech}</span>
+                    <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center">
+                      <TechStackIcon name={tech} size="lg" />
+                    </div>
+                    <span className="text-white/80 text-center text-sm">{tech}</span>
                   </div>
                 </div>
               ))}

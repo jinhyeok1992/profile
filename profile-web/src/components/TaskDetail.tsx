@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Task } from '../App';
 import { Clock, User, AlertCircle, CheckCircle2, X, Code2 } from 'lucide-react';
+import { TechStackIcon } from './TechStackIcon';
 
 interface TaskDetailProps {
   task: Task | undefined;
@@ -18,7 +19,7 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
 
   if (!task) {
     return (
-      <div className="h-full flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <div className="h-full flex items-center justify-center bg-gradient-to-br from-cyan-900 via-sky-900 to-blue-900">
         <div className="text-center px-4">
           <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-white/5 flex items-center justify-center">
             <Play className="w-12 h-12 text-white/20" />
@@ -42,7 +43,7 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
   };
 
   return (
-    <div className="h-full flex flex-col p-4 md:p-8 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="h-full flex flex-col p-4 md:p-8 bg-gradient-to-br from-cyan-900 via-sky-900 to-blue-900">
       {/* Mobile Close Button */}
       <button
         onClick={onClose}
@@ -84,7 +85,7 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1 min-w-0">
               <h2 className="text-white mb-2">{task.title}</h2>
-              <div className="inline-block px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+              <div className="inline-block px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
                 {task.category}
               </div>
             </div>
@@ -98,7 +99,7 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
             <div className="flex items-center gap-3 text-white/70">
               <Clock className="w-5 h-5" />
               <div>
-                <div className="text-white/50">소요 기간</div>
+                <div className="text-white/50">소요 시간</div>
                 <div>{task.duration}</div>
               </div>
             </div>
@@ -168,8 +169,9 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
             {task.techStack.map((tech, index) => (
               <div
                 key={index}
-                className="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105"
               >
+                <TechStackIcon name={tech} size="md" />
                 <span className="text-white/80">{tech}</span>
               </div>
             ))}

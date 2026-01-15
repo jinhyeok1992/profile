@@ -1,4 +1,4 @@
-import { Play, Pause } from 'lucide-react';
+import { Play, Pause, Code2 } from 'lucide-react';
 import { Task } from '../App';
 
 interface TaskListProps {
@@ -19,17 +19,17 @@ export function TaskList({ tasks, selectedTaskId, onTaskSelect, onOpenTechStack 
         </div>
         <button
           onClick={onOpenTechStack}
-          className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/30 hover:border-purple-400/50 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+          className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 hover:border-cyan-400/50 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
           title="전체 기술 스택 보기"
         >
-          <Code2 className="w-5 h-5 md:w-6 md:h-6 text-purple-300 group-hover:text-purple-200 transition-colors" />
+          <Code2 className="w-5 h-5 md:w-6 md:h-6 text-cyan-300 group-hover:text-cyan-200 transition-colors" />
         </button>
       </div>
-      
+
       {/* Task List */}
       <div className="flex-1 overflow-y-auto px-3 md:px-4 py-3 md:py-4">
         <div className="space-y-2">
-          {tasks.sort((a, b) => a.id.localeCompare(b.id)).map((task) => {
+          {tasks.map((task) => {
             const isSelected = selectedTaskId === task.id;
             
             return (
@@ -40,7 +40,7 @@ export function TaskList({ tasks, selectedTaskId, onTaskSelect, onOpenTechStack 
                   group flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg cursor-pointer
                   transition-all duration-300
                   ${isSelected 
-                    ? 'bg-purple-600/30 shadow-lg shadow-purple-500/20' 
+                    ? 'bg-cyan-600/30 shadow-lg shadow-cyan-500/20' 
                     : 'hover:bg-white/5'
                   }
                 `}
@@ -51,7 +51,7 @@ export function TaskList({ tasks, selectedTaskId, onTaskSelect, onOpenTechStack 
                     flex-shrink-0 w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center
                     transition-all duration-300
                     ${isSelected
-                      ? 'bg-purple-500 shadow-lg shadow-purple-500/50'
+                      ? 'bg-cyan-500 shadow-lg shadow-cyan-500/50'
                       : 'bg-white/10 group-hover:bg-white/20'
                     }
                   `}
