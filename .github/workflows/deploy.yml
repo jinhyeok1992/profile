@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: Production - jinhyeok  # 원하는 이름으로 명시
+      url: https://jinhyeok-ruming.vercel.app  # Production URL은 고정
 
     steps:
       - name: Checkout repository
@@ -39,4 +40,7 @@ jobs:
       - name: Deploy to Vercel (Production)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: vercel deploy --token=$VERCEL_TOKEN --prod
+        run: |
+          DEPLOY_URL=$(vercel deploy --token=$VERCEL_TOKEN --prod)
+          echo "url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "Deployed to: $DEPLOY_URL"
