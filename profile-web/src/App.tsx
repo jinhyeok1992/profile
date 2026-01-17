@@ -231,7 +231,7 @@ const mockTasks: Task[] = [
 ];
 
 //추가 기술 스택
-const additionalTechStacks = ['Nexacro', 'Vite', 'Vercel', 'GitHub', 'GitHub Actions', 'GitLab'];
+const additionalTechStacks = ['Nexacro', 'Vite', 'Vercel', 'GitHub', 'GitHub Actions', 'GitLab', 'AWS', 'Slack', 'Nginx', 'Postman', 'Express', 'Node.js', 'Notion'];
 
 export default function App() {
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
@@ -263,7 +263,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="flex h-screen bg-gradient-to-br from-cyan-900 via-sky-900 to-blue-900">
       {/* Left Panel - Task Detail (Desktop) / Overlay (Mobile) */}
       <div className={`
         md:flex-1 md:overflow-hidden md:block

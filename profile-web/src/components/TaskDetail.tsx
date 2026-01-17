@@ -85,9 +85,6 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1 min-w-0">
               <h2 className="text-white mb-2">{task.title}</h2>
-              <div className="inline-block px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                {task.category}
-              </div>
             </div>
             <div className={`px-3 py-1 rounded-full bg-white/10 ${priorityColors[task.priority]} whitespace-nowrap ml-2`}>
               {task.priority}
@@ -106,8 +103,8 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
             <div className="flex items-center gap-3 text-white/70">
               <User className="w-5 h-5" />
               <div>
-                <div className="text-white/50">담당자</div>
-                <div>{task.assignee}</div>
+                <div className="text-white/50">고객사</div>
+                <div>{task.category}</div>
               </div>
             </div>
           </div>
@@ -116,11 +113,11 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
           <div className="mt-6">
             <div className="flex items-center justify-between mb-2">
               <span className="text-white/70">진행률</span>
-              <span className="text-purple-400">{task.progress}%</span>
+              <span className="text-green-400">{task.progress}%</span>
             </div>
             <div className="h-2 bg-white/10 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500"
+                className="h-full bg-gradient-to-r from-green-500 to-yellow-500 transition-all duration-500"
                 style={{ width: `${task.progress}%` }}
               />
             </div>
@@ -150,7 +147,7 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
                 key={index}
                 className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
               >
-                <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-300 flex-shrink-0">
+                <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-300 flex-shrink-0">
                   {index + 1}
                 </div>
                 <span className="text-white/70">{subtask}</span>
@@ -169,7 +166,7 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
             {task.techStack.map((tech, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 hover:scale-105"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-green-500/20 to-yellow-500/20 border border-green-500/30 hover:border-green-400/50 transition-all duration-300 hover:scale-105"
               >
                 <TechStackIcon name={tech} size="md" />
                 <span className="text-white/80">{tech}</span>
