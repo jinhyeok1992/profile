@@ -5,9 +5,10 @@ interface TechStackModalProps {
   isOpen: boolean;
   onClose: () => void;
   techStacks: string[];
+  onTechStackSelect: (techStack: string) => void;
 }
 
-export function TechStackModal({ isOpen, onClose, techStacks }: TechStackModalProps) {
+export function TechStackModal({ isOpen, onClose, techStacks, onTechStackSelect }: TechStackModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -31,7 +32,8 @@ export function TechStackModal({ isOpen, onClose, techStacks }: TechStackModalPr
                 <Code2 className="w-5 h-5 text-cyan-400" />
               </div>
               <div>
-                <h2 className="text-white">사용 기술 스택</h2>
+                <h2 className="text-white">전체 기술 스택</h2>
+                <p className="text-white/50">클릭하여 해당 기술이 사용된 업무 조회</p>
               </div>
             </div>
             <button
@@ -44,11 +46,18 @@ export function TechStackModal({ isOpen, onClose, techStacks }: TechStackModalPr
 
           {/* Content */}
           <div className="p-6 overflow-y-auto max-h-[calc(80vh-120px)]">
+            <div className="mb-4">
+              <span className="text-white/70">총 </span>
+              <span className="text-cyan-400">{techStacks.length}</span>
+              <span className="text-white/70">개의 기술 스택</span>
+            </div>
+
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {techStacks.map((tech, index) => (
-                <div
+                <button
                   key={index}
-                  className="group relative overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105"
+                  onClick={() => onTechStackSelect(tech)}
+                  className="group relative overflow-hidden rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 cursor-pointer"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 to-sky-500/0 group-hover:from-cyan-500/10 group-hover:to-sky-500/10 transition-all duration-300" />
                   <div className="relative p-4 flex flex-col items-center justify-center gap-2">
@@ -57,7 +66,7 @@ export function TechStackModal({ isOpen, onClose, techStacks }: TechStackModalPr
                     </div>
                     <span className="text-white/80 text-center text-sm">{tech}</span>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           </div>

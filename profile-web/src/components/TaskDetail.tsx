@@ -85,6 +85,9 @@ export function TaskDetail({ task, onClose }: TaskDetailProps) {
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1 min-w-0">
               <h2 className="text-white mb-2">{task.title}</h2>
+              <div className="inline-block px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                {task.category}
+              </div>
             </div>
             <div className={`px-3 py-1 rounded-full bg-white/10 ${priorityColors[task.priority]} whitespace-nowrap ml-2`}>
               {task.priority}

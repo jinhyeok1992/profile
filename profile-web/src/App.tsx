@@ -237,13 +237,19 @@ export default function App() {
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isTechStackModalOpen, setIsTechStackModalOpen] = useState(false);
+  const [selectedTechStack, setSelectedTechStack] = useState<string | null>(null);
 
   const selectedTask = mockTasks.find(task => task.id === selectedTaskId);
 
   // Get all unique tech stacks
   const allTechStacks = Array.from(
-    new Set([...mockTasks.flatMap(task => task.techStack), ...additionalTechStacks])
+    new Set(mockTasks.flatMap(task => task.techStack))
   ).sort();
+
+  // Filter tasks by selected tech stack
+  const filteredTasks = selectedTechStack
+    ? mockTasks.filter(task => task.techStack.includes(selectedTechStack))
+    : mockTasks;
 
   const handleTaskSelect = (taskId: string) => {
     setSelectedTaskId(taskId);
@@ -260,6 +266,15 @@ export default function App() {
 
   const handleCloseTechStackModal = () => {
     setIsTechStackModalOpen(false);
+  };
+
+  const handleTechStackSelect = (techStack: string) => {
+    setSelectedTechStack(techStack);
+    setIsTechStackModalOpen(false);
+  };
+
+  const handleClearTechStackFilter = () => {
+    setSelectedTechStack(null);
   };
 
   return (
@@ -288,10 +303,12 @@ export default function App() {
       {/* Right Panel - Task List */}
       <div className="flex-1 md:border-l border-white/10">
         <TaskList
-          tasks={mockTasks}
+          tasks={filteredTasks}
           selectedTaskId={selectedTaskId}
           onTaskSelect={handleTaskSelect}
           onOpenTechStack={handleOpenTechStackModal}
+          selectedTechStack={selectedTechStack}
+          onClearTechStackFilter={handleClearTechStackFilter}
         />
       </div>
 
@@ -300,6 +317,7 @@ export default function App() {
         isOpen={isTechStackModalOpen}
         onClose={handleCloseTechStackModal}
         techStacks={allTechStacks}
+        onTechStackSelect={handleTechStackSelect}
       />
     </div>
   );
