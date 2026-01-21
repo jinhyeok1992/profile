@@ -1,6 +1,6 @@
-import { Play, Pause, Menu, ArrowUpDown, X } from 'lucide-react';
+import { Play, Pause, Menu, ArrowUpDown, X, Check } from 'lucide-react';
 import { Task } from '../App';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 
 interface TaskListProps {
   tasks: Task[];
@@ -13,6 +13,13 @@ interface TaskListProps {
 
 type SortType = 'date-desc' | 'date-asc' | 'name-asc' | 'name-desc';
 
+const sortOptions: { value: SortType; label: string }[] = [
+  { value: 'date-desc', label: '날짜순 (↓)' },
+  { value: 'date-asc', label: '날짜순 (↑)' },
+  { value: 'name-asc', label: '이름순 (↓)' },
+  { value: 'name-desc', label: '이름순 (↑)' },
+];
+
 export function TaskList({ 
   tasks, 
   selectedTaskId, 
@@ -22,6 +29,25 @@ export function TaskList({
   onClearTechStackFilter
 }: TaskListProps) {
   const [sortType, setSortType] = useState<SortType>('date-desc');
+  const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsSortDropdownOpen(false);
+      }
+    };
+
+    if (isSortDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isSortDropdownOpen]);
 
   // Sort tasks based on sortType
   const sortedTasks = useMemo(() => {
@@ -41,24 +67,13 @@ export function TaskList({
     }
   }, [tasks, sortType]);
 
-  const toggleSort = () => {
-    const sortOrder: SortType[] = ['date-desc', 'date-asc', 'name-asc', 'name-desc'];
-    const currentIndex = sortOrder.indexOf(sortType);
-    const nextIndex = (currentIndex + 1) % sortOrder.length;
-    setSortType(sortOrder[nextIndex]);
+  const handleSortSelect = (newSortType: SortType) => {
+    setSortType(newSortType);
+    setIsSortDropdownOpen(false);
   };
 
-  const getSortLabel = () => {
-    switch (sortType) {
-      case 'date-desc':
-        return '날짜순 ↓';
-      case 'date-asc':
-        return '날짜순 ↑';
-      case 'name-asc':
-        return '이름순 ↑';
-      case 'name-desc':
-        return '이름순 ↓';
-    }
+  const getCurrentSortLabel = () => {
+    return sortOptions.find(opt => opt.value === sortType)?.label || '정렬';
   };
 
   return (
@@ -94,15 +109,42 @@ export function TaskList({
 
           {/* Buttons */}
           <div className="flex items-center gap-2">
-            {/* Sort Button */}
-            <button
-              onClick={toggleSort}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-200"
-              title="정렬 방식 변경"
-            >
-              <ArrowUpDown className="w-4 h-4 text-white/70" />
-              <span className="text-white/70 text-sm">{getSortLabel()}</span>
-            </button>
+            {/* Sort Button with Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsSortDropdownOpen(!isSortDropdownOpen)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-200"
+                title="정렬 방식 변경"
+              >
+                <ArrowUpDown className="w-4 h-4 text-white/70" />
+                <span className="text-white/70 text-sm">{getCurrentSortLabel()}</span>
+              </button>
+
+              {/* Dropdown Menu */}
+              {isSortDropdownOpen && (
+                <div className="absolute top-full right-0 mt-2 w-56 bg-gradient-to-br from-slate-800 to-slate-900 border border-white/20 rounded-lg shadow-2xl overflow-hidden z-50">
+                  {sortOptions.map((option) => (
+                    <button
+                      key={option.value}
+                      onClick={() => handleSortSelect(option.value)}
+                      className={`
+                        w-full px-4 py-2.5 text-left flex items-center justify-between
+                        transition-colors duration-150
+                        ${sortType === option.value 
+                          ? 'bg-cyan-500/20 text-cyan-300' 
+                          : 'text-white/70 hover:bg-white/5 hover:text-white'
+                        }
+                      `}
+                    >
+                      <span>{option.label}</span>
+                      {sortType === option.value && (
+                        <Check className="w-4 h-4 text-cyan-400" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Tech Stack Menu Button */}
             <button
